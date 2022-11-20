@@ -1,1 +1,8 @@
-*.env
+# Our environment file
+.env
+
+# python cache dir
+__pycache__
+
+# virtual env dir
+.telebot
