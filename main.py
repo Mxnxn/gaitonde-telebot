@@ -37,7 +37,7 @@ def random_name_generator(update: Update, context) -> None:
         ' ' + combo_2[random.randint(0, len(combo_2)-1)]
     update.message.reply_text('Kaisa hai re {}!'.format(name))
 
-async def listing_handler(update: Update,context):
+def listing_handler(update: Update,context):
     message = update.message.text
     splits = message.split(' ')
     if len(splits) == 2:
@@ -48,16 +48,16 @@ async def listing_handler(update: Update,context):
             for obj in response.json():
                 keyboard.append([InlineKeyboardButton(obj['name'], callback_data=obj['infohash'])])
             reply_markup = InlineKeyboardMarkup(keyboard)
-            await update.message.reply_text("Please choose:", reply_markup=reply_markup)
+            update.message.reply_text("Please choose:", reply_markup=reply_markup)
         else:
-            await update.message.reply_text('Error {}!'.format(response.status_code))
+            update.message.reply_text('Error {}!'.format(response.status_code))
 #/dhundh uncharted
-async def option_handler(update: Update, context) -> None:
+def option_handler(update: Update, context) -> None:
     query = update.callback_query
 
-    await query.answer()
+    query.answer()
 
-    await query.edit_message_text(text=f"Selected option: {query.data}")
+    query.edit_message_text(text=f"Selected option: {query.data}")
 
 def download_handler(update: Update,context ) -> None:
     message = update.message.text
