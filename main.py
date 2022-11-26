@@ -57,7 +57,7 @@ def option_handler(update: Update, context) -> None:
 
     query.answer()
 
-    query.edit_message_text(text=f"Selected option: {query.data}")
+    query.edit_message_text(text=f"Searching option: {query.data}")
 
 def download_handler(update: Update,context ) -> None:
     message = update.message.text
